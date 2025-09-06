@@ -1,0 +1,162 @@
+[
+  {
+    "id": "S101",
+    "name": "Aarav",
+    "login_frequency": 4,
+    "quiz_avg_score": 30,
+    "time_spent_minutes": 20,
+    "last_login_days_ago": 8
+  },
+  {
+    "id": "S102",
+    "name": "Meera",
+    "login_frequency": 8,
+    "quiz_avg_score": 70,
+    "time_spent_minutes": 50,
+    "last_login_days_ago": 1
+  },
+  {
+    "id": "S103",
+    "name": "Rohan",
+    "login_frequency": 6,
+    "quiz_avg_score": 40,
+    "time_spent_minutes": 25,
+    "last_login_days_ago": 4
+  },
+  {
+    "id": "S104",
+    "name": "Divya",
+    "login_frequency": 2,
+    "quiz_avg_score": 15,
+    "time_spent_minutes": 5,
+    "last_login_days_ago": 10
+  },
+  {
+    "id": "S105",
+    "name": "Siddharth",
+    "login_frequency": 9,
+    "quiz_avg_score": 85,
+    "time_spent_minutes": 55,
+    "last_login_days_ago": 0
+  },
+  {
+    "id": "S106",
+    "name": "Ishita",
+    "login_frequency": 3,
+    "quiz_avg_score": 50,
+    "time_spent_minutes": 18,
+    "last_login_days_ago": 5
+  },
+  {
+    "id": "S107",
+    "name": "Kabir",
+    "login_frequency": 7,
+    "quiz_avg_score": 60,
+    "time_spent_minutes": 40,
+    "last_login_days_ago": 2
+  },
+  {
+    "id": "S108",
+    "name": "Ananya",
+    "login_frequency": 5,
+    "quiz_avg_score": 35,
+    "time_spent_minutes": 22,
+    "last_login_days_ago": 3
+  },
+  {
+    "id": "S109",
+    "name": "Vikram",
+    "login_frequency": 6,
+    "quiz_avg_score": 80,
+    "time_spent_minutes": 48,
+    "last_login_days_ago": 1
+  },
+  {
+    "id": "S110",
+    "name": "Pooja",
+    "login_frequency": 4,
+    "quiz_avg_score": 25,
+    "time_spent_minutes": 15,
+    "last_login_days_ago": 6
+  },
+  {
+    "id": "S111",
+    "name": "Rahul",
+    "login_frequency": 8,
+    "quiz_avg_score": 92,
+    "time_spent_minutes": 60,
+    "last_login_days_ago": 0
+  },
+  {
+    "id": "S112",
+    "name": "Simran",
+    "login_frequency": 5,
+    "quiz_avg_score": 45,
+    "time_spent_minutes": 28,
+    "last_login_days_ago": 2
+  },
+  {
+    "id": "S113",
+    "name": "Arjun",
+    "login_frequency": 3,
+    "quiz_avg_score": 20,
+    "time_spent_minutes": 12,
+    "last_login_days_ago": 9
+  },
+  {
+    "id": "S114",
+    "name": "Neha",
+    "login_frequency": 7,
+    "quiz_avg_score": 72,
+    "time_spent_minutes": 42,
+    "last_login_days_ago": 1
+  },
+  {
+    "id": "S115",
+    "name": "Karan",
+    "login_frequency": 6,
+    "quiz_avg_score": 55,
+    "time_spent_minutes": 33,
+    "last_login_days_ago": 3
+  },
+  {
+    "id": "S116",
+    "name": "Tanya",
+    "login_frequency": 2,
+    "quiz_avg_score": 30,
+    "time_spent_minutes": 10,
+    "last_login_days_ago": 7
+  },
+  {
+    "id": "S117",
+    "name": "Manish",
+    "login_frequency": 9,
+    "quiz_avg_score": 88,
+    "time_spent_minutes": 58,
+    "last_login_days_ago": 0
+  },
+  {
+    "id": "S118",
+    "name": "Sneha",
+    "login_frequency": 5,
+    "quiz_avg_score": 42,
+    "time_spent_minutes": 27,
+    "last_login_days_ago": 4
+  },
+  {
+    "id": "S119",
+    "name": "Aditya",
+    "login_frequency": 7,
+    "quiz_avg_score": 65,
+    "time_spent_minutes": 38,
+    "last_login_days_ago": 2
+  },
+  {
+    "id": "S120",
+    "name": "Ritika",
+    "login_frequency": 4,
+    "quiz_avg_score": 28,
+    "time_spent_minutes": 19,
+    "last_login_days_ago": 6
+  }
+]
