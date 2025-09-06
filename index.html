@@ -4,20 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LearnSync - Engagement & Retention Intelligence Platform</title>
-    <meta name="description" content="Real-time learner engagement dashboard with gamification and social learning features">
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Real-time learner engagement dashboard with gamification and social learning features">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9;
+        }
+        .header-gradient {
+            background: linear-gradient(to right, #4f46e5, #6366f1);
+        }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #e0e7ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #3730a3;
+        }
+        .welcome-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .college-name {
+            color: #e0e7ff;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .streak-display {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+        }
+        .profile-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #fff;
+            color: #4f46e5;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        @media (min-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        .stat-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .stat-icon {
+            margin: 0 auto 0.5rem;
+        }
+        .stat-number {
+            font-size: 1.875rem;
+            font-weight: 700;
+        }
+        .stat-label {
+            color: #e0e7ff;
+        }
+        .accent-color { color: #818cf8; }
+        .secondary-color { color: #a78bfa; }
+        .warning-color { color: #facc15; }
+        .streak-color { color: #fb923c; }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #4f46e5;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .progress-bar-bg { background-color: #e5e7eb; }
+        .progress-bar-fill { background-color: #4f46e5; transition: width 0.5s ease-in-out; }
+    </style>
 </head>
 <body>
-    <div class="min-h-screen bg-background">
-        <!-- Header -->
+    <div class="min-h-screen">
         <header class="header-gradient text-white p-6">
             <div class="max-w-7xl mx-auto">
                 <div class="header-top">
                     <div class="user-info">
-                        <div class="avatar">
-                            <div class="avatar-fallback">S</div>
-                        </div>
+                        <div class="avatar">S</div>
                         <div class="user-details">
                             <h1 class="welcome-text">Welcome back, <span id="student-name">Student</span>!</h1>
                             <p class="college-name" id="college-info">University</p>
@@ -26,13 +131,13 @@
                     
                     <div class="header-actions">
                         <div class="streak-display">
-                            <svg class="streak-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg class="streak-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #fb923c;">
                                 <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
                             </svg>
                             <span class="streak-count" id="streak-count">5</span>
                             <span>day streak</span>
                         </div>
-                        <button class="profile-btn" onclick="goToProfile()">
+                        <a href="profile.html" class="profile-btn">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
                                 <circle cx="9" cy="7" r="4"/>
@@ -40,7 +145,7 @@
                                 <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                             </svg>
                             My Profile
-                        </button>
+                        </a>
                     </div>
                 </div>
                 
@@ -84,46 +189,370 @@
             </div>
         </header>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="content-header">
-                <div class="header-text">
-                    <h2 class="main-title">Choose Your Learning Path</h2>
-                    <p class="main-subtitle">Select courses that match your interests and career goals</p>
+        <main class="p-4 md:p-8">
+            <div class="max-w-5xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
+                <div class="flex flex-col sm:flex-row justify-between items-center border-b pb-4 mb-6">
+                    <h1 class="text-3xl font-bold text-gray-800">LearnSphere AI</h1>
+                    <nav class="flex gap-4 mt-4 sm:mt-0">
+                        <button id="show-generator-btn" class="font-semibold text-indigo-600 border-b-2 border-indigo-600 pb-1">Create Course</button>
+                        <button id="show-dashboard-btn" class="font-semibold text-gray-500 hover:text-indigo-600">My Dashboard</button>
+                    </nav>
                 </div>
-                <button class="start-learning-btn" id="start-learning-btn" onclick="startLearning()" style="display: none;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polygon points="5,3 19,12 5,21 5,3"/>
-                    </svg>
-                    Start Learning (<span id="selected-count">0</span> courses)
-                </button>
-            </div>
 
-            <div class="courses-grid" id="courses-grid">
-                <!-- Course cards will be generated by JavaScript -->
-            </div>
-            
-            <div class="empty-state" id="empty-state">
-                <svg class="empty-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"/>
-                    <circle cx="12" cy="12" r="4"/>
-                    <path d="m15 9-6 6"/>
-                    <path d="m9 9 6 6"/>
-                </svg>
-                <h3 class="empty-title">Ready to Start Learning?</h3>
-                <p class="empty-description">Select courses above to begin your personalized learning journey</p>
+                <div id="generator-screen">
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl font-bold text-gray-800">AI Course Architect</h2>
+                        <p class="text-gray-500 mt-2">Enter any topic, and let AI build a structured course for you.</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <input type="text" id="topic-input" class="flex-grow w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none" placeholder="e.g., 'Introduction to Neural Networks'">
+                        <button id="generate-course-btn" class="w-full sm:w-auto bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 flex items-center justify-center gap-2">
+                            <i data-lucide="sparkles" class="w-5 h-5"></i>
+                            <span>Generate Course</span>
+                        </button>
+                    </div>
+                    <div id="generator-loading" class="hidden flex justify-center items-center my-10">
+                        <div class="loader"></div>
+                        <p class="ml-4 text-gray-600">Architecting your course...</p>
+                    </div>
+                    <div id="course-output" class="mt-10 hidden">
+                         <div id="course-header" class="mb-8 p-6 bg-slate-50 rounded-lg">
+                            <h2 id="course-title" class="text-3xl font-bold text-gray-800"></h2>
+                            <p id="course-description" class="text-gray-600 mt-2"></p>
+                            <button id="add-course-btn" class="mt-4 bg-green-600 text-white font-semibold px-5 py-2 rounded-lg hover:bg-green-700 flex items-center justify-center gap-2">
+                                <i data-lucide="plus-circle" class="w-5 h-5"></i>
+                                <span>Add to My Courses</span>
+                            </button>
+                         </div>
+                        <div id="modules-container" class="space-y-6"></div>
+                    </div>
+                </div>
+
+                <div id="dashboard-screen" class="hidden">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">My Dashboard</h2>
+                    <div id="dashboard-content" class="space-y-6">
+                        <p class="text-gray-500">Your enrolled courses will appear here. Go to "Create Course" to generate and add a new course!</p>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
 
-    <!-- Toast Notification -->
-    <div class="toast" id="toast">
-        <div class="toast-content">
-            <h4 class="toast-title" id="toast-title"></h4>
-            <p class="toast-description" id="toast-description"></p>
-        </div>
-    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        lucide.createIcons();
 
-    <script src="script.js"></script>
+        // --- STATE MANAGEMENT ---
+        let userDashboard = {
+            enrolledCourses: []
+        };
+        let currentGeneratedCourse = null;
+
+        // --- DOM ELEMENTS ---
+        const generatorScreen = document.getElementById('generator-screen');
+        const dashboardScreen = document.getElementById('dashboard-screen');
+        const showGeneratorBtn = document.getElementById('show-generator-btn');
+        const showDashboardBtn = document.getElementById('show-dashboard-btn');
+        const topicInput = document.getElementById('topic-input');
+        const generateCourseBtn = document.getElementById('generate-course-btn');
+        const generatorLoading = document.getElementById('generator-loading');
+        const courseOutput = document.getElementById('course-output');
+        const courseTitle = document.getElementById('course-title');
+        const courseDescription = document.getElementById('course-description');
+        const modulesContainer = document.getElementById('modules-container');
+        const addCourseBtn = document.getElementById('add-course-btn');
+        const dashboardContent = document.getElementById('dashboard-content');
+        const activeCoursesCount = document.getElementById('active-courses');
+        
+        // --- NAVIGATION ---
+        showGeneratorBtn.addEventListener('click', () => switchView('generator'));
+        showDashboardBtn.addEventListener('click', () => switchView('dashboard'));
+
+        function switchView(view) {
+            if (view === 'generator') {
+                dashboardScreen.classList.add('hidden');
+                generatorScreen.classList.remove('hidden');
+                showGeneratorBtn.classList.add('text-indigo-600', 'border-indigo-600');
+                showGeneratorBtn.classList.remove('text-gray-500');
+                showDashboardBtn.classList.add('text-gray-500');
+                showDashboardBtn.classList.remove('text-indigo-600', 'border-indigo-600');
+            } else {
+                generatorScreen.classList.add('hidden');
+                dashboardScreen.classList.remove('hidden');
+                showDashboardBtn.classList.add('text-indigo-600', 'border-indigo-600');
+                showDashboardBtn.classList.remove('text-gray-500');
+                showGeneratorBtn.classList.add('text-gray-500');
+                showGeneratorBtn.classList.remove('text-indigo-600', 'border-indigo-600');
+                renderDashboard();
+            }
+        }
+        
+        // --- API CALLER ---
+        async function callGenerativeAI(prompt, jsonSchema = null) {
+            // !!! IMPORTANT SECURITY WARNING !!!
+            // NEVER expose your API key in client-side code.
+            // This key should be kept on a server and accessed through a backend endpoint.
+            // For demonstration purposes only.
+            const apiKey = "AIzaSyDWTx3qTEsSYdpkB0klmQ6kdSbz341hPz4"; // <-- REPLACE WITH YOUR KEY, BUT DO NOT DEPLOY THIS PUBLICLY
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+            };
+
+            if (jsonSchema) {
+                payload.generationConfig = {
+                    responseMimeType: "application/json",
+                };
+                // Gemini API expects the schema inside the prompt for JSON mode
+                 payload.contents[0].parts.push({ text: `\nOutput the response in this JSON schema:\n${JSON.stringify(jsonSchema)}` });
+            }
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorBody = await response.text();
+                    throw new Error(`API Error: ${response.status} ${response.statusText} - ${errorBody}`);
+                }
+
+                const data = await response.json();
+                const text = data.candidates[0].content.parts[0].text;
+                
+                // If a schema was provided, we expect JSON. Otherwise, return plain text.
+                if (jsonSchema) {
+                    return JSON.parse(text);
+                }
+                return text; // Return plain text for feedback
+
+            } catch (error) {
+                console.error("AI Generation Failed:", error);
+                alert("Sorry, there was an error generating AI content. Please check the console for details.");
+                return null;
+            }
+        }
+
+
+        // --- COURSE GENERATION ---
+        generateCourseBtn.addEventListener('click', async () => {
+            const topic = topicInput.value.trim();
+            if (!topic) return;
+            
+            courseOutput.classList.add('hidden');
+            generatorLoading.classList.remove('hidden');
+
+            const prompt = `Create a detailed course structure for the topic: "${topic}". The course should have a title, a short description, and exactly 3 modules. Each module must have a title and a list of 3 specific lesson topics. For each lesson, also provide a relevant YouTube search query.`;
+            const schema = {
+                type: "OBJECT",
+                properties: {
+                    title: { type: "STRING" },
+                    description: { type: "STRING" },
+                    modules: {
+                        type: "ARRAY",
+                        items: {
+                            type: "OBJECT",
+                            properties: {
+                                title: { type: "STRING" },
+                                lessons: {
+                                    type: "ARRAY",
+                                    items: {
+                                        type: "OBJECT",
+                                        properties: {
+                                            topic: { type: "STRING" },
+                                            youtubeSearchQuery: { type: "STRING" }
+                                        },
+                                        required: ["topic", "youtubeSearchQuery"]
+                                    }
+                                }
+                            },
+                            required: ["title", "lessons"]
+                        }
+                    }
+                },
+                required: ["title", "description", "modules"]
+            };
+
+            const courseData = await callGenerativeAI(prompt, schema);
+            
+            generatorLoading.classList.add('hidden');
+            if (courseData) {
+                currentGeneratedCourse = { ...courseData, id: Date.now(), progress: 0 };
+                displayGeneratedCourse(currentGeneratedCourse);
+            }
+        });
+
+        function displayGeneratedCourse(data) {
+            courseTitle.textContent = data.title;
+            courseDescription.textContent = data.description;
+            modulesContainer.innerHTML = '';
+
+            data.modules.forEach((module, moduleIndex) => {
+                const moduleEl = document.createElement('div');
+                moduleEl.className = 'p-6 bg-slate-50 border border-slate-200 rounded-lg';
+                let lessonsHtml = module.lessons.map((lesson, lessonIndex) => `
+                    <div class="p-4 bg-white rounded-md border" data-lesson-id="${moduleIndex}-${lessonIndex}">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="font-semibold text-gray-800">${lesson.topic}</p>
+                                <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(lesson.youtubeSearchQuery)}" target="_blank" class="text-sm text-indigo-500 hover:underline flex items-center gap-1">
+                                    <i data-lucide="youtube" class="w-4 h-4"></i> Watch on YouTube
+                                </a>
+                            </div>
+                            <button data-lesson-topic="${lesson.topic}" data-lesson-id="${moduleIndex}-${lessonIndex}" class="generate-quiz-btn bg-white text-indigo-600 font-semibold px-4 py-2 rounded-lg border-2 border-indigo-600 hover:bg-indigo-50 text-sm">
+                                Take Quiz
+                            </button>
+                        </div>
+                        <div class="quiz-container mt-4 hidden"></div>
+                    </div>
+                `).join('<div class="my-4"></div>');
+
+                moduleEl.innerHTML = `
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Module ${moduleIndex + 1}: ${module.title}</h3>
+                    <div class="space-y-4">${lessonsHtml}</div>
+                `;
+                modulesContainer.appendChild(moduleEl);
+            });
+
+            courseOutput.classList.remove('hidden');
+            lucide.createIcons();
+            document.querySelectorAll('.generate-quiz-btn').forEach(btn => btn.addEventListener('click', handleQuizGeneration));
+        }
+
+        // --- QUIZ GENERATION & HANDLING ---
+        async function handleQuizGeneration(event) {
+            const btn = event.currentTarget;
+            const topic = btn.dataset.lessonTopic;
+            const lessonId = btn.dataset.lessonId;
+            const quizContainer = document.querySelector(`[data-lesson-id="${lessonId}"] .quiz-container`);
+
+            quizContainer.classList.remove('hidden');
+            quizContainer.innerHTML = `<div class="flex items-center"><div class="loader !w-6 !h-6"></div><p class="ml-3 text-sm text-gray-500">Generating quiz...</p></div>`;
+
+            const prompt = `Generate a 3-question multiple-choice quiz on the topic: "${topic}". Each question should have 4 options. Mark the correct answer clearly.`;
+            const schema = {
+                type: "ARRAY",
+                items: {
+                    type: "OBJECT",
+                    properties: {
+                        question: { type: "STRING" },
+                        options: { type: "ARRAY", items: { type: "STRING" } },
+                        correctAnswer: { type: "STRING" }
+                    },
+                    required: ["question", "options", "correctAnswer"]
+                }
+            };
+            const quizData = await callGenerativeAI(prompt, schema);
+
+            if (quizData) {
+                displayQuiz(quizContainer, quizData, topic, lessonId);
+            } else {
+                 quizContainer.innerHTML = `<p class="text-red-500">Failed to generate quiz.</p>`;
+            }
+        }
+        
+        function displayQuiz(container, quizData, topic, lessonId) {
+            let quizHtml = `<h4 class="font-bold text-gray-700 mb-3">Quiz: ${topic}</h4><form>`;
+            quizData.forEach((q, index) => {
+                quizHtml += `
+                    <div class="mb-4">
+                        <p class="font-semibold text-gray-800">${index + 1}. ${q.question}</p>
+                        <div class="mt-2 space-y-1">
+                            ${q.options.map(opt => `
+                                <label class="flex items-center">
+                                    <input type="radio" name="question-${index}" value="${opt}" class="h-4 w-4 text-indigo-600 border-gray-300 focus:ring-indigo-500">
+                                    <span class="ml-3 text-gray-700">${opt}</span>
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            quizHtml += `<button type="submit" class="bg-indigo-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-indigo-700">Submit Quiz</button></form><div class="quiz-result mt-4"></div>`;
+            container.innerHTML = quizHtml;
+            container.querySelector('form').addEventListener('submit', (e) => handleSubmitQuiz(e, quizData, topic, lessonId));
+        }
+
+        async function handleSubmitQuiz(event, quizData, topic, lessonId) {
+            event.preventDefault();
+            const form = event.target;
+            const resultContainer = form.nextElementSibling;
+            let score = 0;
+            let incorrectTopics = [];
+
+            quizData.forEach((q, index) => {
+                const selected = form.querySelector(`input[name="question-${index}"]:checked`);
+                if (selected && selected.value === q.correctAnswer) {
+                    score++;
+                } else {
+                    incorrectTopics.push(q.question);
+                }
+            });
+
+            const percentage = Math.round((score / quizData.length) * 100);
+            resultContainer.innerHTML = `<p class="font-bold">Your score: ${percentage}% (${score}/${quizData.length})</p>`;
+
+            if (percentage < 70 && incorrectTopics.length > 0) {
+                resultContainer.innerHTML += `<div class="ai-feedback mt-2"></div>`;
+                const feedbackContainer = resultContainer.querySelector('.ai-feedback');
+                feedbackContainer.innerHTML = `<div class="flex items-center"><div class="loader !w-6 !h-6"></div><p class="ml-3 text-sm text-gray-500">Analyzing your answers...</p></div>`;
+
+                const prompt = `A student is struggling with the topic "${topic}". They answered questions incorrectly related to: "${incorrectTopics.join(', ')}". Provide a simple, encouraging, and clear explanation of these concepts to help them understand better. Do not output JSON.`;
+                const feedbackText = await callGenerativeAI(prompt); // No schema, so it expects plain text
+
+                if (feedbackText) {
+                     feedbackContainer.innerHTML = `
+                        <div class="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-400">
+                            <h5 class="font-bold text-yellow-800 flex items-center gap-2"><i data-lucide="lightbulb"></i>AI Coach Feedback</h5>
+                            <p class="text-yellow-700 mt-2">${feedbackText}</p>
+                        </div>`;
+                    lucide.createIcons();
+                } else {
+                    feedbackContainer.innerHTML = '';
+                }
+            }
+        }
+        
+        // --- DASHBOARD ---
+        addCourseBtn.addEventListener('click', () => {
+            if (currentGeneratedCourse && !userDashboard.enrolledCourses.find(c => c.id === currentGeneratedCourse.id)) {
+                userDashboard.enrolledCourses.push(currentGeneratedCourse);
+                alert(`"${currentGeneratedCourse.title}" has been added to your dashboard!`);
+                switchView('dashboard');
+            } else if (currentGeneratedCourse) {
+                alert("You have already added this course.");
+            }
+        });
+
+        function renderDashboard() {
+            activeCoursesCount.textContent = userDashboard.enrolledCourses.length;
+
+            if (userDashboard.enrolledCourses.length === 0) {
+                dashboardContent.innerHTML = `<p class="text-gray-500">Your enrolled courses will appear here. Go to "Create Course" to generate and add a new course!</p>`;
+                return;
+            }
+
+            dashboardContent.innerHTML = '';
+            userDashboard.enrolledCourses.forEach(course => {
+                const courseEl = document.createElement('div');
+                courseEl.className = 'p-6 bg-slate-50 border rounded-lg';
+                courseEl.innerHTML = `
+                    <h3 class="text-2xl font-bold text-gray-800">${course.title}</h3>
+                    <p class="text-gray-600 mt-1">${course.description}</p>
+                    <div class="mt-4">
+                        <p class="text-sm font-semibold text-gray-700 mb-1">Overall Progress: ${course.progress}%</p>
+                        <div class="w-full progress-bar-bg rounded-full h-2.5">
+                            <div class="progress-bar-fill h-2.5 rounded-full" style="width: ${course.progress}%"></div>
+                        </div>
+                    </div>
+                `;
+                dashboardContent.appendChild(courseEl);
+            });
+        }
+    });
+    </script>
 </body>
 </html>
