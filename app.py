@@ -2,8 +2,8 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
 import uuid
-import json # <-- ADDED
-import os   # <-- ADDED
+import json
+import os
 
 # --- Local Imports (from your learner analysis file) ---
 # Make sure you have the 'logic.py' and 'ai_nudge.py' files in the same directory.
@@ -15,7 +15,6 @@ app = Flask(__name__)
 # Enable Cross-Origin Resource Sharing (CORS) for the entire app
 CORS(app) 
 
-# --- Helper functions for JSON storage --- ADDED SECTION
 def load_users_from_file():
     """Loads the user database from users.json, or returns an empty dict if it doesn't exist."""
     if os.path.exists('users.json'):
@@ -27,7 +26,6 @@ def save_users_to_file(users):
     """Saves the current user database to users.json."""
     with open('users.json', 'w') as f:
         json.dump(users, f, indent=4)
-# --- END ADDED SECTION ---
 
 # --- In-Memory Database (for user authentication) ---
 # In a real-world application, this would be a proper database.
@@ -59,7 +57,7 @@ def signup():
         "password": hashed_password
     }
     
-    save_users_to_file(users_db) # <-- ADDED THIS LINE to save data
+    save_users_to_file(users_db)
 
     print("--- User Database Updated ---")
     print(users_db)
@@ -70,7 +68,6 @@ def signup():
 @app.route('/api/login', methods=['POST'])
 def login():
     """Handles user login verification."""
-    # NO CHANGES NEEDED HERE
     data = request.get_json()
 
     if not data or not data.get('email') or not data.get('password'):
@@ -94,7 +91,6 @@ def login():
     return jsonify({"error": "Invalid email or password"}), 401
 
 # --- Learner Analysis API Endpoints ---
-# NO CHANGES NEEDED HERE
 
 @app.route('/api/learners/analysis', methods=['GET'])
 def get_learner_analysis():
@@ -135,7 +131,6 @@ def generate_nudge():
     return jsonify({"nudge": nudge_message})
 
 # --- Main Execution ---
-# NO CHANGES NEEDED HERE
 
 if __name__ == '__main__':
     print("--- Starting the LearnSync Backend Server ---")
