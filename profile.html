@@ -192,6 +192,27 @@
       border-radius: 10px;
       text-align: center;
     }
+
+    /* --- ADDED CSS FOR LOGOUT --- */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .logout-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #dc2626; /* Red color for logout */
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background-color 0.2s;
+    }
+
+    .logout-btn:hover {
+      background-color: #b91c1c; /* Darker red on hover */
+    }
   </style>
 </head>
 <body>
@@ -332,6 +353,10 @@
     </div>
   </div>
   
+  <footer>
+    <a href="#" class="logout-btn">Logout</a>
+  </footer>
+
   <script>
     // Tab switching
     const tabs = document.querySelectorAll(".tab");
@@ -378,6 +403,15 @@
 
     closePopup.addEventListener("click", () => {
       popup.style.display = "none";
+    });
+
+    // --- JAVASCRIPT FOR LOGOUT (NOW WITH REDIRECT) ---
+    const logoutBtn = document.querySelector('.logout-btn');
+    logoutBtn.addEventListener('click', (event) => {
+      event.preventDefault(); // Prevents the link from navigating
+      
+      // Redirect to the login page
+      window.location.href = 'login.html'; 
     });
   </script>
 </body>
